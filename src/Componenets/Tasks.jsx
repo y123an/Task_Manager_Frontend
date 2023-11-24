@@ -6,25 +6,30 @@ const Tasks = () => {
 
   useEffect(() => {
     const getTasks = async () => {
-      await axios.get("http://localhost:5000/").then((res) => {
-        // console.log(res);
-        setTasks(res.data.tasks);
-      });
+      await axios
+        .get("https://task-manager-api-1w4m.onrender.com/")
+        .then((res) => {
+          // console.log(res);
+          setTasks(res.data.tasks);
+        });
     };
 
     getTasks();
   }, []);
 
   const handleClick = async (id) => {
-    await axios.post("http://localhost:5000/", { id: id }).then((res) => {
-      setTasks(res.data.tasks);
-    });
+    await axios
+      .post("https://task-manager-api-1w4m.onrender.com/", { id: id })
+      .then((res) => {
+        setTasks(res.data.tasks);
+      });
   };
-
   const reset = async () => {
-    await axios.post("http://localhost:5000/reset").then((res) => {
-      setTasks(res.data.tasks);
-    });
+    await axios
+      .post("https://task-manager-api-1w4m.onrender.com/reset")
+      .then((res) => {
+        setTasks(res.data.tasks);
+      });
   };
 
   return (
